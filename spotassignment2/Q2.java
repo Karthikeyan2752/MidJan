@@ -1,42 +1,36 @@
 package com.spotassignment2;
 
-import java.util.PriorityQueue;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
-class Pair {
-	Integer number;
-	String word;
 
-	Pair(Integer number, String word) {
-		this.number = number;
-		this.word = word;
-	}
-
-}
 public class Q2 {
 
-	public static void sortString() {
+	public static void sortString(ArrayList<String> s) {
+		ArrayList<String> str = new ArrayList<>(s);
 
-	}
-
-	public static void input() {
-		PriorityQueue<Pair> pq = new PriorityQueue<>((Pair p1, Pair p2) -> p1.number - p2.number);
-		pq.add(new Pair(4, "that"));
-		pq.add(new Pair(3, "be"));
-		pq.add(new Pair(0, "to"));
-		pq.add(new Pair(1, "be"));
-		pq.add(new Pair(5, "question"));
-		pq.add(new Pair(1, "or"));
-		pq.add(new Pair(2, "not"));
-		pq.add(new Pair(4, "is"));
-		pq.add(new Pair(2, "to"));
-		pq.add(new Pair(4, "the"));
-		for (Pair p : pq) {
-			System.out.print(p.word + " ");
+		ArrayList<String> temp = new ArrayList<>(str);
+		Collections.sort(temp);
+		for (int i = 0; i < s.size(); i++) {
+			if (str.indexOf(temp.get(i)) < s.size() / 2) {
+				System.out.print("- ");
+			} else {
+				System.out.print(temp.get(i).substring(1) + " ");
+			}
 		}
 	}
 
 	public static void main(String[] args) {
-		input();
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		ArrayList<String> str = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
+			String s = sc.next();
+			str.add(s);
+		}
+
+		sortString(str);
 
 	}
 
